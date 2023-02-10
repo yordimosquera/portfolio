@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { urlFor } from "../sanity";
 
-export default function About() {
+export default function About({ pageInfo }) {
+  const { profilePic, backgroundInformation = "Sotware Engineer" } = pageInfo;
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,7 +25,7 @@ export default function About() {
         }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        src="https://media-exp1.licdn.com/dms/image/C4D03AQE9TYtK7vtvYw/profile-displayphoto-shrink_800_800/0/1525403864409?e=2147483647&v=beta&t=VnHMqRoWgzpedBukvW_3QwUdjVvp98eZcLYs4ArLs5c"
+        src={urlFor(profilePic).url()}
         className="-mb-20 mb:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
       />
       <div className="space-y-10 px-0 md:px-10">
@@ -32,9 +34,7 @@ export default function About() {
           <span className="underline decoration-[#F7AB0A]/50">little</span>
           {""} background
         </h4>
-        <p className="text-base">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-        </p>
+        <p className="text-base">{backgroundInformation}</p>
       </div>
     </motion.div>
   );

@@ -7,11 +7,16 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
-import { experiences, projects, skills, socials } from "../services";
-import { fetch } from "../services/pageInfo";
+import { fetchExperiences } from "../services/fetchExperiences";
+import { fetchPageInfo } from "../services/fetchPageInfo";
+import { fetchProjects } from "../services/fetchProjects";
+import { fetchSkills } from "../services/fetchSkills";
+import { fetchSocials } from "../services/fetchSocials";
+// import { experiences, projects, skills, socials } from "../services";
+// import { fetch } from "../services/socials";
 
 export default function Home({
-  socials = [],
+  socials,
   skills,
   experiences,
   pageInfo,
@@ -27,19 +32,19 @@ export default function Home({
       <Header socials={socials} />
 
       <section id="hero" className="snap-center">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={pageInfo} />
       </section>
       <section id="experience" className="snap-center">
-        <WorkExperience />
+        <WorkExperience experiences={experiences} />
       </section>
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={skills} />
       </section>
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
       <section id="contact" className="snap-start">
         <ContactMe />
@@ -59,21 +64,21 @@ export default function Home({
   );
 }
 
-// export const getStaticProps = async () => {
-//   const pageInfoResponse = await fetch();
-//   // const experiencesResponse = await experiences.fetch();
-//   // const socialsResponse = await socials.fetch();
-//   // const projectsResponse = await projects.fetch();
-//   // const skilssResponse = await skills.fetch();
+export const getStaticProps = async () => {
+  const pageInfoResponse = await fetchPageInfo();
+  const experiencesResponse = await fetchExperiences();
+  const socialsResponse = await fetchSocials();
+  const projectsResponse = await fetchProjects();
+  const skilssResponse = await fetchSkills();
 
-//   return {
-//     props: {
-//       pageInfo: pageInfoResponse,
-//       skilss: {},
-//       socials: [],
-//       projects: {},
-//       experiences: {},
-//     },
-//     revalidate: 10,
-//   };
-// };
+  return {
+    props: {
+      pageInfo: pageInfoResponse,
+      skills: skilssResponse,
+      socials: socialsResponse,
+      projects: projectsResponse,
+      experiences: experiencesResponse,
+    },
+    revalidate: 10,
+  };
+};
