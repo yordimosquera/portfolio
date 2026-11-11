@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Skill from "./Skill";
 import { urlFor } from "../sanity";
 
@@ -9,7 +9,7 @@ export default function Skills({ skills }) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="flex relative flex-col text-center md:text-left xl:flex-grow 
+      className="flex relative flex-col text-center md:text-left xl:grow 
   max-w-[2000px] xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center
   "
     >

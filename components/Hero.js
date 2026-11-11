@@ -44,6 +44,9 @@ export default function Hero({ pageInfo }) {
           <Link href="#projects">
             <button className="heroButton">Projects</button>
           </Link>
+          <Link href="#repositories">
+            <button className="heroButton">Repositories</button>
+          </Link>
         </div>
       </div>
     </div>

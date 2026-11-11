@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { urlFor } from "../sanity";
 
 export default function ExperienceCard({ experience }) {
@@ -14,7 +14,7 @@ export default function ExperienceCard({ experience }) {
     points,
   } = experience;
   return (
-    <article className="flex flex-column rounded-l items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overfloew-hidden">
+    <article className="flex flex-column rounded-l items-center space-y-7 shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overfloew-hidden">
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}

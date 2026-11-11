@@ -5,7 +5,9 @@ import { PhoneIcon, MapIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 export default function ContactMe() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (formData) => {
-    window.location.href = `mailto:papareact.team@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`;
+    window.location.assign(
+      `mailto:papareact.team@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`
+    );
   };
 
   return (

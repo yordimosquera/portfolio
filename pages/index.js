@@ -5,11 +5,13 @@ import ContactMe from "../components/ContactMe";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
+import Repositories from "../components/repositories";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
 import { fetchExperiences } from "../services/fetchExperiences";
 import { fetchPageInfo } from "../services/fetchPageInfo";
 import { fetchProjects } from "../services/fetchProjects";
+import { fetchRepos } from "../services/fetchRepos";
 import { fetchSkills } from "../services/fetchSkills";
 import { fetchSocials } from "../services/fetchSocials";
 // import { experiences, projects, skills, socials } from "../services";
@@ -21,6 +23,7 @@ export default function Home({
   experiences,
   pageInfo,
   projects,
+  repos,
 }) {
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-scroll  overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
@@ -46,6 +49,9 @@ export default function Home({
       <section id="projects" className="snap-start">
         <Projects projects={projects} />
       </section>
+      <section id="repositories" className="snap-start">
+        <Repositories repos={repos} />
+      </section>
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
@@ -53,7 +59,7 @@ export default function Home({
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
             <img
-              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
+              className="h-10 w-10 rounded-full grayscale hover:grayscale-0 cursor-pointer"
               alt=""
               src="https://i.imgur.com/e2yvD6A.png"
             />
@@ -70,6 +76,7 @@ export const getStaticProps = async () => {
   const socialsResponse = await fetchSocials();
   const projectsResponse = await fetchProjects();
   const skilssResponse = await fetchSkills();
+  const repos = await fetchRepos();
 
   return {
     props: {
@@ -78,6 +85,7 @@ export const getStaticProps = async () => {
       socials: socialsResponse,
       projects: projectsResponse,
       experiences: experiencesResponse,
+      repos,
     },
     revalidate: 10,
   };

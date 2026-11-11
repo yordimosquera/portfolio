@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import ExperienceCard from "./ExperienceCard";
 
 export default function WorkExperience({ experiences }) {

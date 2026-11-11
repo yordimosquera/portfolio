@@ -1,4 +1,4 @@
-import { groq } from "next-sanity";
+import groq from "groq";
 import { sanityClient } from "../../sanity";
 
 const get = async (req, res) => {
